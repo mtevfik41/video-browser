@@ -1,17 +1,18 @@
 import React from 'react';
 
 class SearchBar extends React.Component {
-  state = {term: ''}
+  state = {term: ''};
   onInputChange = e => {
     this.setState({term: e.target.value});
-  }
+  };
   onFormSubmit = e => {
     e.preventDefault();
 
     // TODO: Make sure we call callback from parent component
-    console.log(this.state.term)
-    this.setState({term: ''})
-  }
+    this.props.onFormSubmit(this.state.term);
+    this.setState({term: ''});
+  };
+
   render() {
     return (
         <div className="search-bar ui segment">
@@ -26,7 +27,7 @@ class SearchBar extends React.Component {
             </div>
           </form>
         </div>
-    )
+    );
   }
 }
 
